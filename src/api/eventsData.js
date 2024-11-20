@@ -16,4 +16,16 @@ const getEvents = () =>
       .catch(reject);
   });
 
-export default { getEvents };
+const deleteEvents = (firebaseKey) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/events/${firebaseKey}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/jason',
+      },
+    })
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
+export { getEvents, deleteEvents };
