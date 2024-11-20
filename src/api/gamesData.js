@@ -1,5 +1,17 @@
-import React from 'react';
+import { clientCredentials } from '../utils/client';
 
-export default function gamesData() {
-  return <div />;
-}
+const endpoint = clientCredentials.databaseURL;
+
+const deleteGame = (firebaseKey) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/games/${firebaseKey}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
+export default { deleteGame };
