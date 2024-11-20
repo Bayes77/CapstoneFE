@@ -1,31 +1,39 @@
 'use client';
 
- // any component that uses useAuth needs this because if a component directly imports useAuth, it needs to be a client component since useAuth uses React hooks.
-
+import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-import { signOut } from '@/utils/auth'; // anything in the src dir, you can use the @ instead of relative paths
-import { useAuth } from '@/utils/context/authContext';
+// import { useAuth } from '@/utils/context/authContext';
+import { useEffect, useState } from 'react';
+import { getAllEvents } from '../api/eventsData';
+import EventsCard from '../components/EventsCard';
 
 function Home() {
-  const { user } = useAuth();
+  // *set state for events
+  const [events, setEvents] = useState([]);
+
+  // const { user } = useAuth();
+
+  // *function that makes api call to getAllTheEvents
+  const getAllTheEvents = () => {
+    getAllEvents().then(setEvents);
+  };
+
+  // *API call to get getAllEvents on component to render
+  useEffect(() => {
+    getAllTheEvents();
+  }, []);
 
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+    <div className="text-center my-4">
+      <Link href="/events/new" passHref>
+        <Button>Add an Event</Button>
+      </Link>
+      <div className="d-flex flex-wrap">
+        {events.map((event) => (
+          <EventsCard key={event.firebaseKey} eventsObj={event} onUpdate={getAllTheEvents} />
+        ))}
+      </div>
     </div>
   );
 }
-
 export default Home;
