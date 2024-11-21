@@ -15,6 +15,34 @@ const getGames = () =>
       .catch(reject);
   });
 
+const createGames = (payload) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/Events.json`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application.json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
+const updateGames = (payload) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/Games/${payload.firebaseKey}.json`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application.json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
 const deleteGame = (firebaseKey) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/games/${firebaseKey}`, {
@@ -27,4 +55,4 @@ const deleteGame = (firebaseKey) =>
       .catch(reject);
   });
 
-export { deleteGame, getGames };
+export { deleteGame, getGames, createGames, updateGames };

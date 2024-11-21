@@ -2,13 +2,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap/button';
-import { Card } from 'react-bootstrap/card';
+import { Button , Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteEvents } from '../api/eventsData';
 import { useAuth } from '../utils/context/authContext';
 
-export default function EventsCard({ eventsObj, onUpdate }) {
+function EventsCard({ eventsObj, onUpdate }) {
   const { user } = useAuth();
 
   // * this function is for deleting events
@@ -83,3 +82,5 @@ EventsCard.propTypes = {
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
+
+export default EventsCard;

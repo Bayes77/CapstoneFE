@@ -1,13 +1,13 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 // import { useAuth } from '@/utils/context/authContext';
-import { useEffect, useState } from 'react';
-import { getAllEvents } from '../api/eventsData';
+import { getEvents } from '../api/eventsData';
 import EventsCard from '../components/EventsCard';
 
-function Home() {
+function HomePage() {
   // *set state for events
   const [events, setEvents] = useState([]);
 
@@ -15,7 +15,7 @@ function Home() {
 
   // *function that makes api call to getAllTheEvents
   const getAllTheEvents = () => {
-    getAllEvents().then(setEvents);
+    getEvents().then(setEvents);
   };
 
   // *API call to get getAllEvents on component to render
@@ -36,4 +36,4 @@ function Home() {
     </div>
   );
 }
-export default Home;
+export default HomePage;
