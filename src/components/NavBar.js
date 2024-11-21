@@ -8,8 +8,8 @@ export default function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Link passHref href="/" className='navbar-brand'>
-         CHANGE ME
+        <Link passHref href="/" className="navbar-brand">
+          BG Imperium
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -18,10 +18,25 @@ export default function NavBar() {
             <Link className="nav-link" href="/">
               Home
             </Link>
+            <Link className="nav-link" href="/events">
+              My Events
+            </Link>
+            <Link className="nav-link" href="/events/edit/new">
+              Create Events
+            </Link>
+            <Link className="nav-link" href="/games">
+              My Games
+            </Link>
+            <Link className="nav-link" href="/games/edit/new">
+              Create Games
+            </Link>
+            <Link className="nav-link" href="/rsvp">
+              RSVPS
+            </Link>
           </Nav>
 
           <Button variant="danger" onClick={signOut}>
-              Sign Out
+            Sign Out
           </Button>
         </Navbar.Collapse>
       </Container>
