@@ -1,9 +1,8 @@
-import { object } from 'prop-types';
 import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getEvents = () =>
+const getAllEvents = () =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/Events.json`, {
       method: 'GET',
@@ -12,7 +11,7 @@ const getEvents = () =>
       },
     })
       .then((response) => response.json())
-      .then((data) => resolve(object.values(data)))
+      .then((data) => resolve(data))
       .catch(reject);
   });
 
@@ -56,4 +55,4 @@ const deleteEvents = (firebaseKey) =>
       .catch(reject);
   });
 
-export { getEvents, deleteEvents, createEvents, updateEvents };
+export { getAllEvents, deleteEvents, createEvents, updateEvents };
