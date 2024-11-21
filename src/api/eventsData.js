@@ -2,7 +2,7 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getAllEvents = () =>
+const getEvents = () =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/Events.json`, {
       method: 'GET',
@@ -55,4 +55,4 @@ const deleteEvents = (firebaseKey) =>
       .catch(reject);
   });
 
-export { getAllEvents, deleteEvents, createEvents, updateEvents };
+export { getEvents, deleteEvents, createEvents, updateEvents };
