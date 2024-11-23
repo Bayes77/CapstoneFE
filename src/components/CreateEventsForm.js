@@ -3,9 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
-import { FloatingLabel } from 'react-bootstrap/FloatingLabel';
-import { Form } from 'react-bootstrap/form';
-import { Button } from 'react-bootstrap';
+
+import { Button, Form, FloatingLabel } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { getGames } from '../api/gamesData';
 import { createEvents, updateEvents } from '../api/eventsData';
@@ -47,7 +46,7 @@ function CreateEventsForm({ obj = initialState }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateEvents(formInput).then(() => router.push(`/evnets/${obj.firebaseKey}`));
+      updateEvents(formInput).then(() => router.push(`/events/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createEvents(payload).then(({ name }) => {
@@ -73,9 +72,9 @@ function CreateEventsForm({ obj = initialState }) {
 
       {/* *Dropdown to select a game */}
       <FloatingLabel controlId="floatingSelect" label="Game Name">
-        <Form.Select aria-label="Game" name="gameId" onChange={handleChange} className="mb-3" value={formInput.gameId || ''} required>
+        <Form.Select aria-label="Game" name="gameId" onChange={handleChange} className="mb-3" value={formInput.gameId || ''}>
           <option value="">Select a Game</option>
-          {games.map((game) => (
+          {games?.map((game) => (
             <option key={game.id} value={game.id}>
               {game.name}
               {/* {game.designer} */}

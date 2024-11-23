@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button , Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteEvents } from '../api/eventsData';
 import { useAuth } from '../utils/context/authContext';
@@ -12,7 +12,7 @@ function EventsCard({ eventsObj, onUpdate }) {
 
   // * this function is for deleting events
   const deleteThisEvent = () => {
-    if (window.confirm(`Delete ${eventsObj.eventName}`)) {
+    if (window.confirm(`Delete ${eventsObj.eventName}?`)) {
       deleteEvents(eventsObj.firebaseKey).then(() => onUpdate());
     }
   };
@@ -35,7 +35,8 @@ function EventsCard({ eventsObj, onUpdate }) {
               <br />
             </span>
           )}{' '} */}
-          {eventsObj.date ? eventsObj.date.slice(0, 10) : ''}
+          {eventsObj.date}
+          {eventsObj.time}
           {/* <br />${eventsObj.ticketPrice} */}
           <br />
         </p>

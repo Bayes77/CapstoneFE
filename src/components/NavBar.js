@@ -18,16 +18,16 @@ export default function NavBar() {
             <Link className="nav-link" href="/">
               Home
             </Link>
-            <Link className="nav-link" href="/events">
+            <Link className="nav-link" href="/event">
               My Events
             </Link>
-            <Link className="nav-link" href="/events/edit/new">
+            <Link className="nav-link" href="/event/new">
               Create Events
             </Link>
             <Link className="nav-link" href="/games">
               My Games
             </Link>
-            <Link className="nav-link" href="/games/edit/new">
+            <Link className="nav-link" href="/games/new">
               Create Games
             </Link>
             <Link className="nav-link" href="/rsvp">

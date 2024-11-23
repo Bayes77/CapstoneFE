@@ -4,14 +4,20 @@ const endpoint = clientCredentials.databaseURL;
 
 const getEvents = () =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/Events.json`, {
+    fetch(`${endpoint}/events.json`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     })
       .then((response) => response.json())
-      .then((data) => resolve(data))
+      .then((data) => {
+        if (data) {
+          resolve(Object.values(data));
+        } else {
+          resolve([]);
+        }
+      })
       .catch(reject);
   });
 
@@ -43,6 +49,19 @@ const updateEvents = (payload) =>
       .catch(reject);
   });
 
+const getSingleEvent = (firebaseKey) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/events/${firebaseKey}.json`, {
+      method: 'GET',
+      headers: {
+        ContentType: 'application.json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
 const deleteEvents = (firebaseKey) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/events/${firebaseKey}`, {
@@ -55,4 +74,4 @@ const deleteEvents = (firebaseKey) =>
       .catch(reject);
   });
 
-export { getEvents, deleteEvents, createEvents, updateEvents };
+export { getEvents, deleteEvents, createEvents, updateEvents, getSingleEvent };
