@@ -1,10 +1,10 @@
 import React from 'react';
-import CreateGamesForm from '../../../components/CreateGamesForm';
+import CreateEventsForm from '../../../components/CreateEventsForm';
 
 export default function page() {
   return (
     <div>
-      <CreateGamesForm />
+      <CreateEventsForm />
     </div>
   );
 }

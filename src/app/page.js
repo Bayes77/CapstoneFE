@@ -10,6 +10,7 @@ import EventsCard from '../components/EventsCard';
 function HomePage() {
   // *set state for events
   const [events, setEvents] = useState([]);
+  console.warn(events);
 
   // const { user } = useAuth();
 

@@ -3,13 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
-import Form, { FloatingLabel } from 'react-bootstrap';
-import { Button } from 'react-bootstrap/Form';
+import { Button, Form, FloatingLabel } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { createGames, updateGames } from '../api/gamesData';
 
 const initialState = {
-  gameName: '',
+  name: '',
   image: '',
   designer: '',
   numberOfPLayers: '',
@@ -54,7 +53,7 @@ function CreateGamesForm({ obj = initialState }) {
 
       {/* *First Name INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Game Name" className="mb-3">
-        <Form.Control type="text" placeholder="Enter Game Name" name="game name" value={formInput.gameName} onChange={handleChange} required />
+        <Form.Control type="text" placeholder="Enter Game Name" name="name" value={formInput.name} onChange={handleChange} required />
       </FloatingLabel>
 
       {/* * Last Name INPUT  */}

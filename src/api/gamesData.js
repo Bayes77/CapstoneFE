@@ -17,7 +17,7 @@ const getGames = () =>
 
 const createGames = (payload) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/Events.json`, {
+    fetch(`${endpoint}/games.json`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application.json',
@@ -31,7 +31,7 @@ const createGames = (payload) =>
 
 const updateGames = (payload) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/Games/${payload.firebaseKey}.json`, {
+    fetch(`${endpoint}/games/${payload.firebaseKey}.json`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application.json',
