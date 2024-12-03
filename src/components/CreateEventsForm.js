@@ -66,7 +66,7 @@ function CreateEventsForm({ obj = initialState }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateEvents(formInput).then(() => router.push(`/events/${obj.firebaseKey}`));
+      updateEvents(formInput).then(() => router.push(`/event/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createEvents(payload).then((r) => {
