@@ -23,7 +23,7 @@ const getEvents = () =>
 
 const getAllUserEvents = (uid) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/events/users/${uid}.json`, {
+    fetch(`${endpoint}/events.json?orderBy="uid"&equalTo="${uid}"`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

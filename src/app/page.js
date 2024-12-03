@@ -22,7 +22,7 @@ function HomePage() {
   useEffect(() => {
     getAllTheEvents();
   }, []);
-  console.log(events);
+
   return (
     <div className="text-center my-4">
       <Link href="/event/new" passHref>
