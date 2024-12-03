@@ -17,15 +17,12 @@ function EventsCard({ eventsObj, onUpdate }) {
     }
   };
 
-  const isOwner = !eventsObj.id || eventsObj.uid === user.id;
-
   return (
     <Card id="card" style={{ width: '18rem', margin: '10px' }}>
       <Card.Img variant="top" src={eventsObj.imageUrl} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>
           {eventsObj.eventName}
-          {/* <br /> {eventsObj.venue?.name} */}
           <br />
         </Card.Title>
         <p className="card-text bold">
@@ -37,15 +34,9 @@ function EventsCard({ eventsObj, onUpdate }) {
           )}{' '} */}
           {eventsObj.date}
           {eventsObj.time}
-          {/* <br />${eventsObj.ticketPrice} */}
           <br />
         </p>
-        {/* {eventsObj.city} */}
-        {/* <Link href={eventsObj.ticketUrl}>
-        <Button variant="primary" size="sm" id="ticket">
-          Tickets
-        </Button>
-      </Link> */}
+
         <br />
         {/* *DYNAMIC LINK TO events DETAILS  */}
         <Link href={`/event/${eventsObj.firebaseKey}`} passHref>
@@ -54,15 +45,15 @@ function EventsCard({ eventsObj, onUpdate }) {
           </Button>
           <br />
         </Link>
-        {isOwner && (
-          <Link href={`/events/edit/${eventsObj.firebaseKey}`} passHref>
+        {user.uid === eventsObj.uid && (
+          <Link href={`/event/edit/${eventsObj.firebaseKey}`} passHref>
             <Button id="edit" variant="info">
               Edit
             </Button>
             <br />
           </Link>
         )}
-        {isOwner && (
+        {user.uid === eventsObj.uid && (
           <Button id="delete" onClick={deleteThisEvent} className="m-2">
             DELETE
           </Button>

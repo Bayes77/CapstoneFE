@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
+import { useAuth } from '../../utils/context/authContext';
 import { getAllUserEvents } from '../../api/eventsData';
 import EventsCard from '../../components/EventsCard';
-import { useAuth } from '../../utils/context/authContext';
 
 function Eventspage() {
   const [events, setEvents] = useState([]);
@@ -18,7 +18,7 @@ function Eventspage() {
 
   useEffect(() => {
     getAllTheEvents();
-  }, [user]);
+  }, []);
 
   return (
     <div className="text-center my-4">
