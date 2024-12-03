@@ -24,3 +24,20 @@ update an event
 ## Loom Video
 
 https://www.loom.com/share/fd382ba921034104b55156807120ddea
+
+
+## Screenshots
+
+HomePgae
+<img width="960" alt="fe capstone pic 1" src="https://github.com/user-attachments/assets/08fa601f-041a-4e79-8551-d37697f5aab0">
+
+Create Events Form
+<img width="1012" alt="fe capstone pic 2" src="https://github.com/user-attachments/assets/60004950-ebc6-480a-a03e-d341aa7690e4">
+
+
+Event Details Page
+<img width="960" alt="fe capstone pic 3" src="https://github.com/user-attachments/assets/825db28a-d460-4a40-951b-ac1b320af094">
+
+
+
+
