@@ -24,7 +24,7 @@ export default function NavBar() {
             <Link className="nav-link" href="/event/new">
               Create Events
             </Link>
-            <Link className="nav-link" href="/games">
+            {/* <Link className="nav-link" href="/games">
               My Games
             </Link>
             <Link className="nav-link" href="/games/new">
@@ -32,7 +32,7 @@ export default function NavBar() {
             </Link>
             <Link className="nav-link" href="/rsvp">
               RSVPS
-            </Link>
+            </Link> */}
           </Nav>
 
           <Button variant="danger" onClick={signOut}>

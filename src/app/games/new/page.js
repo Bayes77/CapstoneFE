@@ -1,10 +1,10 @@
-import React from 'react';
-import CreateGamesForm from '../../../components/CreateGamesForm';
+// import React from 'react';
+// import CreateGamesForm from '../../../components/CreateGamesForm';
 
-export default function page() {
-  return (
-    <div>
-      <CreateGamesForm />
-    </div>
-  );
-}
+// export default function page() {
+//   return (
+//     <div>
+//       <CreateGamesForm />
+//     </div>
+//   );
+// }

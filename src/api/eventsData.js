@@ -21,6 +21,25 @@ const getEvents = () =>
       .catch(reject);
   });
 
+const getAllUserEvents = (uid) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/events/users/${uid}.json`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          resolve(Object.values(data));
+        } else {
+          resolve([]);
+        }
+      })
+      .catch(reject);
+  });
+
 const createEvents = (payload) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/events.json`, {
@@ -64,7 +83,7 @@ const getSingleEvent = (firebaseKey) =>
 
 const deleteEvents = (firebaseKey) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/events/${firebaseKey}`, {
+    fetch(`${endpoint}/events/${firebaseKey}.json`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/jason',
@@ -74,4 +93,4 @@ const deleteEvents = (firebaseKey) =>
       .catch(reject);
   });
 
-export { getEvents, deleteEvents, createEvents, updateEvents, getSingleEvent };
+export { getEvents, deleteEvents, createEvents, updateEvents, getSingleEvent, getAllUserEvents };
