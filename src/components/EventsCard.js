@@ -17,7 +17,7 @@ function EventsCard({ eventsObj, onUpdate }) {
     }
   };
 
-  const isOwner = !eventsObj.firebaseKey || eventsObj.uid === user.id;
+  const isOwner = !eventsObj.id || eventsObj.uid === user.id;
 
   return (
     <Card id="card" style={{ width: '18rem', margin: '10px' }}>
@@ -48,7 +48,7 @@ function EventsCard({ eventsObj, onUpdate }) {
       </Link> */}
         <br />
         {/* *DYNAMIC LINK TO events DETAILS  */}
-        <Link href={`/events/details/${eventsObj.firebaseKey}`} passHref>
+        <Link href={`/event/${eventsObj.firebaseKey}`} passHref>
           <Button id="details" variant="primary">
             Details
           </Button>
@@ -76,6 +76,7 @@ EventsCard.propTypes = {
   eventsObj: PropTypes.shape({
     imageUrl: PropTypes.string,
     eventName: PropTypes.string,
+    id: PropTypes.number,
     date: PropTypes.string,
     time: PropTypes.string,
     uid: PropTypes.string,

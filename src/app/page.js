@@ -10,7 +10,6 @@ import EventsCard from '../components/EventsCard';
 function HomePage() {
   // *set state for events
   const [events, setEvents] = useState([]);
-  console.warn(events);
 
   // const { user } = useAuth();
 
@@ -23,10 +22,10 @@ function HomePage() {
   useEffect(() => {
     getAllTheEvents();
   }, []);
-
+  console.log(events);
   return (
     <div className="text-center my-4">
-      <Link href="/events/new" passHref>
+      <Link href="/event/new" passHref>
         <Button>Add an Event</Button>
       </Link>
       <div className="d-flex flex-wrap">

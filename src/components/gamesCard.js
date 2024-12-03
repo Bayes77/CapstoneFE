@@ -2,32 +2,31 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap/card';
+import Button from 'react-bootstrap/card';
 import { Card } from 'react-bootstrap';
 import Link from 'next/link';
 // eslint-disable-next-line import/named
 import { deleteGame } from '../api/gamesData';
-import { useAuth } from '../utils/context/authContext';
 // import { useAuth } from '../utils/context/authContext';
 
-export default function gamesCard({ gamesObj, onUpdate }) {
-  const { user } = useAuth;
+function GamesCard({ gamesObj, onUpdate }) {
+  // const { user } = useAuth;
 
   // * function for deleting games
   const deleteThisGame = () => {
-    if (window.confirm(`Delete ${gamesObj.gameName}?`)) {
+    if (window.confirm(`Delete ${gamesObj.name}?`)) {
       deleteGame(gamesObj.firebaseKey).then(() => onUpdate());
     }
   };
 
   // *for getting user owned games
-  const isOwner = !gamesObj.firebaseKey || gamesObj.uid === user.id;
+  // const isOwner = !gamesObj.id || gamesObj.uid === user.id;
 
   return (
     <Card id="card" style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={gamesObj.image} alt={gamesObj.gameName} style={{ height: '400px' }} />
+      <Card.Img variant="top" src={gamesObj?.image} alt={gamesObj?.name} style={{ height: '400px' }} />
       <Card.Body>
-        <Card.Title>{gamesObj.gameName}</Card.Title>
+        <Card.Title>{gamesObj.name}</Card.Title>
         <p className="card-text bold">
           {/* {venuesObj.sale && (
               <span>
@@ -47,27 +46,25 @@ export default function gamesCard({ gamesObj, onUpdate }) {
             <Button>
           </Link> */}
         {/* DYNAMIC LINK TO EDIT THE venues DETAILS  */}
-        {isOwner && (
-          <Link href={`/games/edit/${gamesObj.firebaseKey}`} passHref>
-            <Button id="edit" variant="info">
-              Edit
-            </Button>
-          </Link>
-        )}
-        {isOwner && (
-          <Button id="delete" variant="danger" onClick={deleteThisGame} className="m-2">
-            DELETE
+
+        <Link href={`/games/edit/${gamesObj.firebaseKey}`} passHref>
+          <Button id="edit" variant="info">
+            Edit
           </Button>
-        )}
+        </Link>
+
+        <Button id="delete" variant="danger" onClick={deleteThisGame} className="m-2">
+          DELETE
+        </Button>
       </Card.Body>
     </Card>
   );
 }
 
-gamesCard.propTypes = {
+GamesCard.propTypes = {
   gamesObj: PropTypes.shape({
-    gameName: PropTypes.string,
-    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    image: PropTypes.string,
     designer: PropTypes.string,
     numberOfPlayers: PropTypes.number,
     uid: PropTypes.string,
@@ -75,3 +72,5 @@ gamesCard.propTypes = {
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
+
+export default GamesCard;

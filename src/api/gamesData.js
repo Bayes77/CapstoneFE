@@ -11,7 +11,32 @@ const getGames = () =>
       },
     })
       .then((response) => response.json())
-      .then((data) => resolve(data))
+      .then((data) => {
+        if (data) {
+          resolve(Object.values(data));
+        } else {
+          resolve([]);
+        }
+      })
+      .catch(reject);
+  });
+
+const getGamesByEvent = (firebaseKey) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/games.json?orderBy="eventsId"&equalTo="${firebaseKey}"`, {
+      method: 'GET',
+      headers: {
+        ContentType: 'application.json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          resolve(Object.values(data));
+        } else {
+          resolve([]);
+        }
+      })
       .catch(reject);
   });
 
@@ -55,4 +80,4 @@ const deleteGame = (firebaseKey) =>
       .catch(reject);
   });
 
-export { deleteGame, getGames, createGames, updateGames };
+export { deleteGame, getGames, createGames, updateGames, getGamesByEvent };
