@@ -47,7 +47,7 @@ function GamesCard({ gamesObj, onUpdate }) {
           </Link> */}
         {/* DYNAMIC LINK TO EDIT THE venues DETAILS  */}
 
-        <Link href={`/games/edit/${gamesObj.firebaseKey}`} passHref>
+        <Link href={`/game/edit/${gamesObj.firebaseKey}`} passHref>
           <Button id="edit" variant="info">
             Edit
           </Button>
