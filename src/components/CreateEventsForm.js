@@ -102,7 +102,7 @@ function CreateEventsForm({ obj = initialState }) {
           value={selectedGame} // Bind to selectedGame state
         >
           <option value="">Select a Game</option>
-          {games.map((game) => (
+          {games?.map((game) => (
             <option key={game.id} value={game.name}>
               {game.name}
             </option>

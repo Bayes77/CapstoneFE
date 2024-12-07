@@ -24,15 +24,15 @@ export default function NavBar() {
             <Link className="nav-link" href="/event/new">
               Create Events
             </Link>
-            {/* <Link className="nav-link" href="/games">
+            <Link className="nav-link" href="/game">
               My Games
             </Link>
-            <Link className="nav-link" href="/games/new">
+            <Link className="nav-link" href="/game/new">
               Create Games
             </Link>
             <Link className="nav-link" href="/rsvp">
               RSVPS
-            </Link> */}
+            </Link>
           </Nav>
 
           <Button variant="danger" onClick={signOut}>
