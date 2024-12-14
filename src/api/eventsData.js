@@ -93,4 +93,20 @@ const deleteEvents = (firebaseKey) =>
       .catch(reject);
   });
 
-export { getEvents, deleteEvents, createEvents, updateEvents, getSingleEvent, getAllUserEvents };
+const getRsvpEvents = (uid) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/events.json?orderBy="uid"&equalTo="${uid}"`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application.json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const rsvp = Object.values(data).filter((item) => item.rsvp);
+        resolve(rsvp);
+      })
+      .catch(reject);
+  });
+
+export { getEvents, deleteEvents, createEvents, updateEvents, getSingleEvent, getAllUserEvents, getRsvpEvents };
